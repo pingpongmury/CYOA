@@ -101,12 +101,12 @@ class Story() : Serializable{
                         tempP.responses.clear()
                         tempP.winLoss = ' '
                     }
-                    tempP.text = line
+                    tempP.text = line.replace("\\n", System.getProperty("line.separator").toString())
                 }else if(lastLine.contains(Regex("R\\-\\d+\\-\\d+"))){
                     fromTo = lastLine.split("-".toRegex())
                     tempR.comesFrom = fromTo[1].toInt() - 1
                     tempR.goesTo = fromTo[2].toInt() - 1
-                    tempR.text = line
+                    tempR.text = line.replace("\\n", System.getProperty("line.separator").toString())
                     tempP.responses.addElement(tempR.copy())
                 }else if(line == "W"){
                     tempP.winLoss = 'W'
