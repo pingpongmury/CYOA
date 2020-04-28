@@ -3,6 +3,7 @@ package com.example.cyoa
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,7 @@ class PlayAdapter(val myStory: Story, val temp: TextView) : RecyclerView.Adapter
     // Determines win/loss status
     override fun onBindViewHolder(holder: ResponseListViewHolder, position: Int) {
         temp.story_prompt.text = myStory.prompts[promptIndex].text
+        println(System.getProperty("line.separator"))
         holder.view.story_response.text = myStory.prompts[promptIndex].responses[position].text
 
         // Detect when response item is clicked,
@@ -61,6 +63,9 @@ class PlayAdapter(val myStory: Story, val temp: TextView) : RecyclerView.Adapter
             }
             // Update the prompt and response list recyclerView
             notifyDataSetChanged()
+            temp.story_prompt.text = myStory.prompts[promptIndex].text
+            // Refocus TalkBack Accessibility Service to the prompt view
+            temp.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
         }
     }
 
