@@ -1,0 +1,26 @@
+this is storyTitle2
+this is storyAuthor2
+P
+this is prompt1 in story2
+R-1-2
+this is response1 to prompt1 in story2
+R-1-3
+this is response2 to prompt1 in story2
+P
+this is prompt2 in story2
+R-2-3
+this is response1 to prompt2 in story2
+R-2-4
+this is response2 to prompt2 in story2
+P
+this is prompt3 in story2
+R-3-4
+this is response1 to prompt3 in story2
+R-3-5
+this is response2 to prompt3 in story2
+P
+this is prompt4 in story2
+L
+P
+this is prompt5 in story2
+W

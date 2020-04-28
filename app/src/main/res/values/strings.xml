@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CYOA</string>
+    <string name="story_title_header">Title:</string>
+    <string name="story_author_header">By:</string>
+</resources>
