@@ -1,6 +1,9 @@
 package com.example.cyoa
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,15 +46,33 @@ class StoryListViewHolder(val view: View, var myLib: Library): RecyclerView.View
     companion object {
         // Key to the SerializableExtra (Story Object) passed with Intent
         val STORY_KEY = "STORY"
+        val RESUME_KEY = "RESUME"
     }
 
     init{
         // Detect when story item is clicked,
         // When clicked: pass selected story to a new PlayActivity
         view.setOnClickListener {
+
             val intent = Intent(view.context, PlayActivity::class.java)
-            intent.putExtra(STORY_KEY, myLib.library[adapterPosition] as Serializable)
-            view.context.startActivity(intent)
+            intent.putExtra(STORY_KEY, adapterPosition)
+
+            if(myLib.library[adapterPosition].resumePosition != 0){
+
+                val builder = AlertDialog.Builder(view.context)
+                    .setTitle("Select Play Type")
+                    .setPositiveButton("Resume") { dialogInterface: DialogInterface, i: Int ->
+                        intent.putExtra(RESUME_KEY, myLib.library[adapterPosition].resumePosition)
+                        view.context.startActivity(intent)
+                    }
+                    .setNeutralButton("New") { dialogInterface: DialogInterface, i: Int ->
+                        view.context.startActivity(intent)
+                    }
+                    .show()
+            }else{
+                view.context.startActivity(intent)
+            }
+
         }
     }
 }

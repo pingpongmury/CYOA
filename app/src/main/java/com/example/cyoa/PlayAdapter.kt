@@ -15,10 +15,13 @@ import kotlinx.android.synthetic.main.story_response.view.*
 //      2. Makes items in the response list recyclerView clickable
 //      3. Links the clicked response to the appropriate new prompt/responses pair
 //      4. Determines the Win/Lose outcome of the player's session
-class PlayAdapter(val myStory: Story, val temp: TextView) : RecyclerView.Adapter<ResponseListViewHolder>() {
+class PlayAdapter(
+    private val storyPos: Int,
+    private val resumePos: Int,
+    private val myPrompt: TextView) : RecyclerView.Adapter<ResponseListViewHolder>() {
 
-    // Holds the current position of the prompt vector within DataBase -> Story
-    var promptIndex: Int = 0
+    private var promptIndex: Int = resumePos
+    private var currentStory: Story = MainActivity.myLib.library[storyPos]
 
     // When a response item is created:
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResponseListViewHolder {
@@ -31,26 +34,26 @@ class PlayAdapter(val myStory: Story, val temp: TextView) : RecyclerView.Adapter
 
     //How many responses are in the list?
     override fun getItemCount(): Int {
-        return myStory.prompts[promptIndex].responses.size
+        return currentStory.prompts[promptIndex].responses.size
     }
 
     // Binds response data to the response item,
     // Updates prompt and responses when response is clicked
     // Determines win/loss status
     override fun onBindViewHolder(holder: ResponseListViewHolder, position: Int) {
-        temp.story_prompt.text = myStory.prompts[promptIndex].text
-        println(System.getProperty("line.separator"))
-        holder.view.story_response.text = myStory.prompts[promptIndex].responses[position].text
+        myPrompt.story_prompt.text = currentStory.prompts[promptIndex].text
+        holder.view.story_response.text = currentStory.prompts[promptIndex].responses[position].text
 
         // Detect when response item is clicked,
         // When clicked: update prompt and response list recyclerView according to clicked response
         holder.view.setOnClickListener {
 
             // Update current position of the prompt vector
-            promptIndex = myStory.prompts[promptIndex].responses[position].goesTo
+            promptIndex = currentStory.prompts[promptIndex].responses[position].goesTo
+            currentStory.resumePosition = promptIndex
 
             // Holds the win/loss status at the updated prompt
-            val gameStatus: Char = myStory.prompts[promptIndex].winLoss
+            val gameStatus: Char = currentStory.prompts[promptIndex].winLoss
 
             // Determine win/loss status
             if(gameStatus != ' '){
@@ -63,9 +66,9 @@ class PlayAdapter(val myStory: Story, val temp: TextView) : RecyclerView.Adapter
             }
             // Update the prompt and response list recyclerView
             notifyDataSetChanged()
-            temp.story_prompt.text = myStory.prompts[promptIndex].text
+            myPrompt.story_prompt.text = currentStory.prompts[promptIndex].text
             // Refocus TalkBack Accessibility Service to the prompt view
-            temp.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            myPrompt.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
         }
     }
 

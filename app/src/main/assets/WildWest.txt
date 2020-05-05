@@ -1,0 +1,146 @@
+0
+Wild West
+Tavin Ardell
+
+
+
+P
+You're a ranch-hand driving a wagon through the plains when a wheel falls off the wagon. It's high-noon and you don't have any supplies, not a soul in sight.
+R-1-2
+Go down the trail.
+R-1-3
+Sit and wait.
+
+
+
+P
+You come to a fork in the road, one path leads to a desert, the other leads to a trail flooded from heavy rain.
+R-2-4
+Follow the path to the desert.
+R-2-5
+Follow the flooded path.
+
+
+
+P
+While waiting, you are ambushed by bandits and are captured.
+R-3-2
+Retry.
+L
+
+
+
+P
+Travelling through the desert leaves you starved and thirsty. You continue on for what feels like days, you don't have much energy left. However, there is a buffalo up ahead that you could shoot and eat.
+R-4-6
+Shoot the buffalo and eat it.
+R-4-7
+Spare the buffalo and continue your journey.
+
+
+
+P
+The path of the flood creates many obstacles around you to travel through. You confront a river but the bottom is layered with thick mud.
+R-5-8
+Take your chances and attempt to cross.
+R-5-9
+Look for a way around.
+
+
+
+P
+The buffalo restores your energy, but you are still very thirsty.
+R-6-10
+Sit and wait to regain your strength.
+R-6-11
+Continue down the path.
+
+
+
+P
+You travel for another few miles and come across a puddle of water.
+R-7-12
+Drink from the puddle.
+R-7-13
+Continue down the trail.
+
+
+
+P
+You get stuck in the mud, weak from fighting the flooded path, you drown.
+R-8-5
+Retry.
+L
+
+
+
+P
+You follow the river down-stream and notice a shallow crossing.
+R-9-15
+Cross the river.
+R-9-17
+You've travelled a long way without any rest, take a load off.
+
+
+
+P
+While waiting, you die of dehydration.
+R-10-6
+Retry.
+L
+
+
+
+P
+You travel for another few miles and come across a puddle of water.
+R-7-12
+Drink from the puddle.
+R-7-14
+Continue down the trail.
+
+
+
+P
+The puddle is riddled with parasites, you die of dysentery.
+R-12-7
+Retry.
+L
+
+
+
+P
+Without food or water, you eventually succumb to the harsh desert.
+R-13-7
+Retry.
+L
+
+
+
+P
+Without water, you eventually succumb to the harsh desert.
+R-11-7
+Retry.
+L
+
+
+
+P
+You make it across the river. After continuing along the path you make it to your destination.
+R-15-1
+Play Again.
+W
+
+
+
+P
+The puddle is riddled with parasites, you die of dysentery.
+R-16-11
+Retry.
+
+
+
+P
+While waiting, you are ambushed by bandits and are captured.
+R-17-9
+Retry.
+L
