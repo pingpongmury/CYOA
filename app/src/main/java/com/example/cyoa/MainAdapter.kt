@@ -55,20 +55,17 @@ class StoryListViewHolder(val view: View, var myLib: Library): RecyclerView.View
         view.setOnClickListener {
 
             val intent = Intent(view.context, PlayActivity::class.java)
+            intent.putExtra(STORY_KEY, adapterPosition)
 
             if(myLib.library[adapterPosition].resumePosition != 0){
 
                 val builder = AlertDialog.Builder(view.context)
                     .setTitle("Select Play Type")
                     .setPositiveButton("Resume") { dialogInterface: DialogInterface, i: Int ->
-
-                        intent.putExtra(STORY_KEY, adapterPosition)
                         intent.putExtra(RESUME_KEY, myLib.library[adapterPosition].resumePosition)
                         view.context.startActivity(intent)
                     }
                     .setNeutralButton("New") { dialogInterface: DialogInterface, i: Int ->
-
-                        intent.putExtra(STORY_KEY, adapterPosition)
                         view.context.startActivity(intent)
                     }
                     .show()
