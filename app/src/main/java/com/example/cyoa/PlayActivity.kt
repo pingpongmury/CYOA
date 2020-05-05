@@ -19,14 +19,16 @@ class PlayActivity : AppCompatActivity() {
         val myPrompt = findViewById<TextView>(R.id.story_prompt)
 
         // Receive the selected story passed from MainAdapter -> StoryListViewHolder
-        var currentStory = intent.getSerializableExtra(StoryListViewHolder.STORY_KEY) as Story
+        var storyPos = intent.getIntExtra(StoryListViewHolder.STORY_KEY,0)
+        var resumePos: Int = intent.getIntExtra(StoryListViewHolder.RESUME_KEY,0)
 
         // Initialize response list
         recyclerView_play.layoutManager = LinearLayoutManager(this)
-        recyclerView_play.adapter = PlayAdapter(currentStory, myPrompt)
+        recyclerView_play.adapter = PlayAdapter(storyPos,resumePos, myPrompt)
 
         // Populate navigation bar with selected story title
-        val navBarTitle = currentStory.title
+        val navBarTitle = MainActivity.myLib.library[storyPos].title
         supportActionBar?.title = navBarTitle
+        supportActionBar?.setHomeActionContentDescription("Return to Library")
     }
 }

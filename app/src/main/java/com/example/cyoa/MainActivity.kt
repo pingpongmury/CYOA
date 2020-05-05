@@ -7,14 +7,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 // This activity displays a list of stories for the user to select from
 class MainActivity : AppCompatActivity() {
+    companion object{
+        // Initialize library
+        var myLib: Library = Library()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize library
-        val myLib: Library = Library(applicationContext, "library.txt")
+        myLib = Library(applicationContext, "library.txt")
 
         //Initialize story list recyclerView
         recyclerView_main.layoutManager = LinearLayoutManager(this)
@@ -27,11 +30,5 @@ class MainActivity : AppCompatActivity() {
         //TODO: add response items to play activity         DONE
         //TODO: fix PlayAdapter.getItemCount()              DONE
         //TODO: implement game logic                        DONE
-        //TODO: make it pretty
-        //TODO: make it accessible to the blind
-        //TODO: if time:
-        //TODO:     clean up
-        //TODO:     add exception handling
-        //TODO:     add scope modifiers where appropriate
     }
 }

@@ -64,6 +64,7 @@ data class Response(
 
 // Holds the list of prompts and responses that make up the story, parses each from a file
 class Story() : Serializable{
+    var resumePosition: Int = 0
     var title: String = ""
     var author: String = ""
     var prompts: Vector<Prompt> = Vector()
@@ -82,12 +83,13 @@ class Story() : Serializable{
             var lastLine: String = String()
             // Holds the response identifier ('R') and linking data for the response ['R', comesFrom, goesTo]
             var fromTo: List<String>
-            //
+            // Reads the story file into a list of lines
             val lines: List<String> = myContext.assets.open(fileName).bufferedReader().readLines()
 
-            // Assign title and author
-            title = lines[0]
-            author = lines[1]
+            // Assign resumePosition, title, author
+            resumePosition = lines[0].toInt()
+            title = lines[1]
+            author = lines[2]
 
             // Parse prompts and responses
             // For each line of the story file
@@ -132,18 +134,16 @@ class Story() : Serializable{
 
 
 // Holds the list of stories in the given file and initializes them
-class Library(myContext: Context, fileList: String){
+class Library(){
     var library: Vector<Story> = Vector()
 
-    // Holds the story that is currently under construction
-    private var temp: Story = Story()
+    constructor(myContext: Context, fileList: String) : this(){
+        // Holds the story that is currently under construction
+        var temp: Story = Story()
 
-    // Initialize each story from the given file and add it to the library
-    init{
         try {
             val lines: List<String> = myContext.assets.open(fileList).bufferedReader().readLines()
             lines.forEach{
-                //temp.story.clear()
                 temp = Story(myContext, it)
                 library.addElement(temp)
             }
