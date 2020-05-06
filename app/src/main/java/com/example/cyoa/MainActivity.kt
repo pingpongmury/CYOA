@@ -21,14 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         //Initialize story list recyclerView
         recyclerView_main.layoutManager = LinearLayoutManager(this)
-        recyclerView_main.adapter = MainAdapter(myLib)
-
-        //TODO: add story items to recyclerview             DONE
-        //TODO: make recyclerview clickable                 DONE
-        //TODO: link clicks to new activity (play activity) DONE
-        //TODO: add prompt items to play activity           DONE
-        //TODO: add response items to play activity         DONE
-        //TODO: fix PlayAdapter.getItemCount()              DONE
-        //TODO: implement game logic                        DONE
+        recyclerView_main.adapter = MainAdapter()
     }
 }

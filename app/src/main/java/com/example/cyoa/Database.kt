@@ -11,6 +11,7 @@ import java.io.Serializable
 *************************************** STORY FILES ***********************************************
 ******************** (an example library is included as example_story.txt) ************************
 ***************************************************************************************************
+resumeData                              // When story created: 0, will be overwritten when played
 storyTitle
 storyAuthor
 P

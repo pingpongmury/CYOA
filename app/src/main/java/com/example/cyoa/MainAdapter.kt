@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cyoa.MainActivity.Companion.myLib
 import kotlinx.android.synthetic.main.story_info_item.view.*
 import java.io.Serializable
 
@@ -15,7 +16,7 @@ import java.io.Serializable
 //      1. Populates the recyclerView with the list of stories / authors
 //      2. Makes the items within the story list recyclerView clickable
 //      3. Routes the user to the PlayActivity for the selected story
-class MainAdapter(val myLib: Library): RecyclerView.Adapter<StoryListViewHolder>() {
+class MainAdapter(): RecyclerView.Adapter<StoryListViewHolder>() {
 
     // When a story item is created:
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryListViewHolder {
@@ -23,7 +24,7 @@ class MainAdapter(val myLib: Library): RecyclerView.Adapter<StoryListViewHolder>
         val storyListItem = layoutInflater.inflate(R.layout.story_info_item, parent, false)
 
         // Return the story item to the story list recyclerView
-        return StoryListViewHolder(storyListItem, myLib)
+        return StoryListViewHolder(storyListItem)
     }
 
     // How many stories are in the list?
@@ -42,7 +43,7 @@ class MainAdapter(val myLib: Library): RecyclerView.Adapter<StoryListViewHolder>
 
 
 // Defines the story item and describes it's behavior
-class StoryListViewHolder(val view: View, var myLib: Library): RecyclerView.ViewHolder(view) {
+class StoryListViewHolder(val view: View): RecyclerView.ViewHolder(view) {
     companion object {
         // Key to the SerializableExtra (Story Object) passed with Intent
         val STORY_KEY = "STORY"
