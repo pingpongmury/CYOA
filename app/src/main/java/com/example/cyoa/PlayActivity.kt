@@ -19,8 +19,8 @@ class PlayActivity : AppCompatActivity() {
         val myPrompt = findViewById<TextView>(R.id.story_prompt)
 
         // Receive the selected story passed from MainAdapter -> StoryListViewHolder
-        var storyPos = intent.getIntExtra(StoryListViewHolder.STORY_KEY,0)
-        var resumePos: Int = intent.getIntExtra(StoryListViewHolder.RESUME_KEY,0)
+        val storyPos = intent.getIntExtra(StoryListViewHolder.STORY_KEY,0)
+        val resumePos: Int = intent.getIntExtra(StoryListViewHolder.RESUME_KEY,0)
 
         // Initialize response list
         recyclerView_play.layoutManager = LinearLayoutManager(this)
